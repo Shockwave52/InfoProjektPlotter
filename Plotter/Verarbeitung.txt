@@ -1,0 +1,25 @@
+package derp;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Verarbeitung {
+	private int Xmin,Xmax,Skalierung,Eingabe;
+	public void setXmin(int X)
+	{
+		Xmin=X;
+	}
+	public void setXmax(int X)
+	{
+		Xmax=X;
+	}
+	public void setSkalierung(int X)
+	{
+		Skalierung=X;
+	}
+	public void setEingabe(String Eingabe)
+	{
+		
+	}
+	
+}
