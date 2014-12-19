@@ -7,7 +7,8 @@ import javax.swing.*;
 
 public class Layout implements ActionListener{
 	
-	//Verarbeitung test = new Verarbeitung();
+	Verarbeitung test = new Verarbeitung();
+	Graphzeichner sup = new Graphzeichner();
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
 	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,platzhalter;
 	
@@ -76,7 +77,7 @@ public class Layout implements ActionListener{
 		
 		window.setLayout(new BorderLayout());
 		//window.add(new Graph(),BorderLayout.CENTER);
-		window.add(platzhalter,BorderLayout.CENTER);
+		window.add(sup,BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
 		
 		window.pack();
@@ -85,11 +86,21 @@ public class Layout implements ActionListener{
 		
 	public void actionPerformed(ActionEvent e)
 	{
+		String ein = eingabeFeld.getText();
 		String xmi = xMaxFeld.getText();
 		String xma = xMinFeld.getText();
+		String ska = skalierungFeld.getText();
 		
 		int xmin =Integer.parseInt(xmi);
 		int xmax =Integer.parseInt(xma);
+		int eing =Integer.parseInt(ein);
+		int skal =Integer.parseInt(ska);
+		
+		test.setXmin(xmin);
+		test.setXmax(xmax);
+		test.setSkalierung(skal);
+		//test.setXmax(eing);
+		
 		
 	}
 
