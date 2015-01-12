@@ -77,7 +77,7 @@ public class Layout implements ActionListener{
 		
 		window.setLayout(new BorderLayout());
 		//window.add(new Graph(),BorderLayout.CENTER);
-		window.add(sup,BorderLayout.CENTER);
+		window.add(new sup(),BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
 		
 		window.pack();
@@ -90,17 +90,23 @@ public class Layout implements ActionListener{
 		String xmi = xMaxFeld.getText();
 		String xma = xMinFeld.getText();
 		String ska = skalierungFeld.getText();
+		String ymi = yMinLabel.getText();
+		String yma = yMaxFeld.getText();
 		
 		int xmin =Integer.parseInt(xmi);
 		int xmax =Integer.parseInt(xma);
 		int eing =Integer.parseInt(ein);
 		int skal =Integer.parseInt(ska);
+		int ymin =Integer.parseInt(ymi);
+		int ymax =Integer.parseInt(yma);
 		
 		test.setXmin(xmin);
 		test.setXmax(xmax);
 		test.setSkalierung(skal);
-		//test.setXmax(eing);
+		sup.setYmin(ymin);
+		sup.setYmax(ymax);
 		
+		sup.repaint();
 		
 	}
 
