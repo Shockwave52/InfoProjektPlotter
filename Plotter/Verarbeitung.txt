@@ -64,5 +64,5 @@ public class Verarbeitung {
 	{
 		return Xmax;
 	}
-	
+	System.out.println("hello world");
 }
