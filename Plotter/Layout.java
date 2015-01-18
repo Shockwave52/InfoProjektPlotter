@@ -1,4 +1,4 @@
-package derp;
+package plotter;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,10 +22,7 @@ public class Layout implements ActionListener{
 		
 		//Panel definieren
 		JPanel eingabe=new JPanel();
-		eingabe.setBackground(Color.BLUE);
-		eingabe.setPreferredSize(new Dimension(100,90));
-		
-		//Button,Label, etc definieren
+		eingabe.setBackground(Color.RED);
 		
 		//Buttons
 		JButton draw= new JButton("Zeichnen");
@@ -58,8 +55,7 @@ public class Layout implements ActionListener{
 		platzhalter = new JLabel("DerGraph",SwingConstants.LEFT);
 		
 		//Panel zusammenbauen
-		eingabe.setLayout(new GridLayout(7,2)); 
-		//button.setBounds(100, 100, 100, 100);
+		eingabe.setLayout(new GridLayout(7,2,10,10)); 
 		eingabe.add(eingabeLabel);
 		eingabe.add(eingabeFeld);
 		eingabe.add(xMaxLabel);
@@ -77,7 +73,7 @@ public class Layout implements ActionListener{
 		
 		window.setLayout(new BorderLayout());
 		//window.add(new Graph(),BorderLayout.CENTER);
-		window.add(new sup(),BorderLayout.CENTER);
+		window.add(new Graphzeichner(),BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
 		
 		window.pack();
@@ -87,26 +83,28 @@ public class Layout implements ActionListener{
 	public void actionPerformed(ActionEvent e)
 	{
 		String ein = eingabeFeld.getText();
+		
 		String xmi = xMaxFeld.getText();
 		String xma = xMinFeld.getText();
 		String ska = skalierungFeld.getText();
-		String ymi = yMinLabel.getText();
+		//String ymi = yMinLabel.getText();
 		String yma = yMaxFeld.getText();
 		
 		int xmin =Integer.parseInt(xmi);
 		int xmax =Integer.parseInt(xma);
-		int eing =Integer.parseInt(ein);
 		int skal =Integer.parseInt(ska);
-		int ymin =Integer.parseInt(ymi);
+		//int ymin =Integer.parseInt(ymi);
 		int ymax =Integer.parseInt(yma);
 		
 		test.setXmin(xmin);
 		test.setXmax(xmax);
 		test.setSkalierung(skal);
-		sup.setYmin(ymin);
-		sup.setYmax(ymax);
+		//test.setYmin(ymin);
+		test.setYmax(ymax);
 		
+		test.verarbeitung(ein);
 		sup.repaint();
+		
 		
 	}
 
