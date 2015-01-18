@@ -10,7 +10,7 @@ public class Layout implements ActionListener{
 	Verarbeitung test = new Verarbeitung();
 	Graphzeichner sup = new Graphzeichner();
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
-	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,platzhalter;
+	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel;
 	
 	public Layout () {
 		//Window definieren
@@ -50,10 +50,7 @@ public class Layout implements ActionListener{
 		yMinLabel.setText("Minimaler Y-Wert");
 		skalierungLabel = new JLabel();
 		skalierungLabel.setText ("Skalierung");
-		
-		//PlatzhalterLabel
-		platzhalter = new JLabel("DerGraph",SwingConstants.LEFT);
-		
+			
 		//Panel zusammenbauen
 		eingabe.setLayout(new GridLayout(7,2,10,10)); 
 		eingabe.add(eingabeLabel);
@@ -72,7 +69,6 @@ public class Layout implements ActionListener{
 		eingabe.add(reset);		
 		
 		window.setLayout(new BorderLayout());
-		//window.add(new Graph(),BorderLayout.CENTER);
 		window.add(new Graphzeichner(),BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
 		
@@ -102,10 +98,12 @@ public class Layout implements ActionListener{
 		//test.setYmin(ymin);
 		test.setYmax(ymax);
 		
-		test.verarbeitung(ein);
-		sup.repaint();
-		
-		
+		//test.verarbeitung(ein);
+		//sup.paintComponent();
+		//window.add(new Graphzeichner(),BorderLayout.CENTER);
+		//new Graphzeichner();
+	
+	
 	}
 
 	public static void main(String[] args) {

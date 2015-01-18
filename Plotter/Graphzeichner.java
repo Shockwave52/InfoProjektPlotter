@@ -18,7 +18,8 @@ public class Graphzeichner extends JPanel {
 	
 	Verarbeitung ver = new Verarbeitung();
 	
-	protected void repaint(Graphics g)//Graphics g)
+	public void paint(Graphics g)
+	//protected void paintComponent(Graphics g)
 	{
 		//Graphics g;// =Graphics;
 		g.drawRect(0,0,100,100);
@@ -41,6 +42,7 @@ public class Graphzeichner extends JPanel {
 		
 		//g.drawLine(0,0,0,0); //X-Achse
 		//g.drawLine(0,0,0,0); //Y-Achse)
+		
 		System.out.println("jop");
 	}
 
