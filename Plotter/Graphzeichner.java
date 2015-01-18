@@ -1,8 +1,8 @@
 
-import java.awt.*;
-import java.awt.Event.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 public class Graphzeichner extends JPanel {
 
@@ -21,7 +21,7 @@ public class Graphzeichner extends JPanel {
 		g.setColor(Color.black);
 		
 		g.drawLine(0,0,0,yRange); //Rahmen ver. Links
-		g.drawLine(0,yRange,xRange,yRange); //Rahemn hor. Unten
+		g.drawLine(0,yRange,xRange,yRange); //Rahmen hor. Unten
 		g.drawLine(xRange,yRange,xRange,0); //Rahmen ver. rechts
 		g.drawLine(xRange,yRange,0,0); //Rahmen hor. oben
 		
@@ -49,10 +49,10 @@ public class Graphzeichner extends JPanel {
 		Ymin = yMi*10;
 	}*/
 	
-	public void plot(String formel)
+	public void plot(String eingabe,int xMin,int xMax)
 	{
 		
-		Verarbeitung ver = new Verarbeitung(formel);
+		Verarbeitung ver = new Verarbeitung(eingabe,xMin,xMax);
 		
 	}
 	

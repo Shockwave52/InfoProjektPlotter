@@ -7,16 +7,15 @@ import javax.swing.*;
 
 public class Layout implements ActionListener{
 	
-	graph sup = new graph();
+	
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
 	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,platzhalter,ausgabeFeld;
-	int test;
-	graph draw;
+	Graphzeichner sup;
 	
 	
 	
 	public Layout () {
-		draw=new graph();
+		sup = new Graphzeichner();
 		
 		//Window definieren
 		JFrame window = new JFrame();
@@ -87,8 +86,8 @@ public class Layout implements ActionListener{
 		eingabe.add(reset);		
 		
 		window.setLayout(new BorderLayout());
-		window.add(new graph(),BorderLayout.CENTER);
-		window.add(sup,BorderLayout.CENTER);
+		//window.add(new graph(),BorderLayout.CENTER);
+		//window.add(sup,BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
 		window.add(ausgabe,BorderLayout.SOUTH);
 		
@@ -100,10 +99,10 @@ public class Layout implements ActionListener{
 	public void actionPerformed(ActionEvent e)
 	{
 		String ein = eingabeFeld.getText();
-		String xmi = xMaxFeld.getText();
-		String xma = xMinFeld.getText();
+		String xma = xMaxFeld.getText();
+		String xmi = xMinFeld.getText();
 		String ska = skalierungFeld.getText();
-		String ymi = yMinLabel.getText();
+		String ymi = yMinFeld.getText();
 		String yma = yMaxFeld.getText();
 		
 		int xmin =Integer.parseInt(xmi);
@@ -112,6 +111,9 @@ public class Layout implements ActionListener{
 		int ymin =Integer.parseInt(ymi);
 		int ymax =Integer.parseInt(yma);
 		
+	
+		
+		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);
 	
 		
 		

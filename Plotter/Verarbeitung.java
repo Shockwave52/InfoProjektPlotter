@@ -12,9 +12,11 @@ public class Verarbeitung {
 	private JLabel ausgabeFeld;
 	int test=0;
 	
-	public Verarbeitung(String formel)
+	public Verarbeitung(String formel,int xMinHilf,int xMaxHilf)
 	{
-		int i =0;
+		int xMin=xMinHilf;
+		int xMax=xMaxHilf;
+		String eingabe=formel;
 	}
 		
 
