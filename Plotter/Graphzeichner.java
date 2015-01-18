@@ -1,4 +1,3 @@
-package plotter;
 
 import java.awt.*;
 import java.awt.Event.*;
@@ -7,32 +6,18 @@ import javax.swing.*;
 
 public class Graphzeichner extends JPanel {
 
-	private int Ymax;
-	private int Ymin;
+	private int yMax,yMin,xMin,xMax,skal;
+	private String eingabe;
 	private int yRange;
-	private int Xmax;
-	private int Xmin;
 	private int xRange;
 	private int preSkal;
-	private int skal;
 	
-	Verarbeitung ver = new Verarbeitung();
 	
-	public void paint(Graphics g)
-	//protected void paintComponent(Graphics g)
+	
+	protected void repaint(Graphics g)//Graphics g)
 	{
 		//Graphics g;// =Graphics;
-		g.drawRect(0,0,100,100);
-		
-		Xmax = ver.getXmax()*10;
-		Xmin = ver.getXmin()*10;
-		Ymax = ver.getYmax()*10;
-		Ymin = ver.getYmin()*10;
-		xRange = Xmax-Xmin;
-		yRange = Ymax-Ymin;
-		preSkal = ver.getSkalierung();
-		skal = preSkal *10;
-		
+	
 		g.setColor(Color.black);
 		
 		g.drawLine(0,0,0,yRange); //Rahmen ver. Links
@@ -42,9 +27,33 @@ public class Graphzeichner extends JPanel {
 		
 		//g.drawLine(0,0,0,0); //X-Achse
 		//g.drawLine(0,0,0,0); //Y-Achse)
-		
-		System.out.println("jop");
+	
 	}
-
+	public void setWindow(int xMinHilf ,int xMaxHilf, int yMinHilf, int yMaxHilf, int skalHilf, String eingabeHilf)
+	{
+		xMin=xMinHilf;
+		xMax=xMaxHilf;
+		yMin=yMinHilf;
+		yMax=yMaxHilf;
+		skal=skalHilf;
+		eingabe=eingabeHilf;
+	}
+	/*public void setYmax(int yMa)
+	{
+		Ymax = yMa*10;
+		
+	}
+		
+	public void setYmin(int yMi)
+	{
+		Ymin = yMi*10;
+	}*/
+	
+	public void plot(String formel)
+	{
+		
+		Verarbeitung ver = new Verarbeitung(formel);
+		
+	}
+	
 }
-

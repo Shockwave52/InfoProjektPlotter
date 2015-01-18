@@ -1,4 +1,4 @@
-package plotter;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,12 +7,17 @@ import javax.swing.*;
 
 public class Layout implements ActionListener{
 	
-	Verarbeitung test = new Verarbeitung();
-	Graphzeichner sup = new Graphzeichner();
+	graph sup = new graph();
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
-	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel;
+	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,platzhalter,ausgabeFeld;
+	int test;
+	graph draw;
+	
+	
 	
 	public Layout () {
+		draw=new graph();
+		
 		//Window definieren
 		JFrame window = new JFrame();
 		window.setTitle("Funktions-Plotter");
@@ -21,8 +26,14 @@ public class Layout implements ActionListener{
 		window.setBackground(Color.lightGray);
 		
 		//Panel definieren
+		JPanel ausgabe=new JPanel();
+		ausgabe.setBackground(Color.RED);
+		ausgabe.setPreferredSize(new Dimension(100,50));
 		JPanel eingabe=new JPanel();
-		eingabe.setBackground(Color.RED);
+		eingabe.setBackground(Color.BLUE);
+		eingabe.setPreferredSize(new Dimension(100,90));
+		
+		//Button,Label, etc definieren
 		
 		//Buttons
 		JButton draw= new JButton("Zeichnen");
@@ -30,6 +41,7 @@ public class Layout implements ActionListener{
 		JButton reset= new JButton("Löschen");
 		
 		//eingabeTexfelder
+		
 		eingabeFeld=new JTextField("0",10);
 		xMaxFeld=new JTextField("0",10);
 		xMinFeld=new JTextField("0",10);
@@ -38,6 +50,7 @@ public class Layout implements ActionListener{
 		skalierungFeld=new JTextField("0",10);
 		
 		//JLabel zu eingabeFelder
+		ausgabeFeld=new JLabel();
 		eingabeLabel = new JLabel();
 		eingabeLabel.setText("Funktion");
 		xMaxLabel = new JLabel();
@@ -50,9 +63,14 @@ public class Layout implements ActionListener{
 		yMinLabel.setText("Minimaler Y-Wert");
 		skalierungLabel = new JLabel();
 		skalierungLabel.setText ("Skalierung");
-			
+		
+		//PlatzhalterLabel
+		platzhalter = new JLabel("DerGraph",SwingConstants.LEFT);
+		
 		//Panel zusammenbauen
-		eingabe.setLayout(new GridLayout(7,2,10,10)); 
+		eingabe.setLayout(new GridLayout(7,2)); 
+		//button.setBounds(100, 100, 100, 100);
+		ausgabe.add(ausgabeFeld);
 		eingabe.add(eingabeLabel);
 		eingabe.add(eingabeFeld);
 		eingabe.add(xMaxLabel);
@@ -69,45 +87,49 @@ public class Layout implements ActionListener{
 		eingabe.add(reset);		
 		
 		window.setLayout(new BorderLayout());
-		window.add(new Graphzeichner(),BorderLayout.CENTER);
+		window.add(new graph(),BorderLayout.CENTER);
+		window.add(sup,BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
+		window.add(ausgabe,BorderLayout.SOUTH);
 		
 		window.pack();
 		window.setVisible(true);
 	}
+	
 		
 	public void actionPerformed(ActionEvent e)
 	{
 		String ein = eingabeFeld.getText();
-		
 		String xmi = xMaxFeld.getText();
 		String xma = xMinFeld.getText();
 		String ska = skalierungFeld.getText();
-		//String ymi = yMinLabel.getText();
+		String ymi = yMinLabel.getText();
 		String yma = yMaxFeld.getText();
 		
 		int xmin =Integer.parseInt(xmi);
 		int xmax =Integer.parseInt(xma);
 		int skal =Integer.parseInt(ska);
-		//int ymin =Integer.parseInt(ymi);
+		int ymin =Integer.parseInt(ymi);
 		int ymax =Integer.parseInt(yma);
 		
-		test.setXmin(xmin);
+	
+		
+		
+		/*test.setXmin(xmin);
 		test.setXmax(xmax);
 		test.setSkalierung(skal);
-		//test.setYmin(ymin);
-		test.setYmax(ymax);
+		sup.setYmin(ymin);
+		sup.setYmax(ymax);
 		
-		//test.verarbeitung(ein);
-		//sup.paintComponent();
-		//window.add(new Graphzeichner(),BorderLayout.CENTER);
-		//new Graphzeichner();
-	
-	
+		sup.repaint();*/
+		
+		
 	}
 
 	public static void main(String[] args) {
+		
 		Layout Plotter = new Layout();
+		
 	
 	}
 
