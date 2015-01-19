@@ -1,4 +1,4 @@
-
+package plotter;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -42,6 +42,26 @@ public class Graphzeichner extends JPanel {
 	
 		g.drawLine(0,yAchseZero,xRange,yAchseZero); //X-Achse
 		g.drawLine(xAchseZero,0,xAchseZero,yRange); //Y-Achse)
+		
+		/*
+		for (int i=0;i<arraycount;)
+		{
+			if (((array[i]+skalierung) < yRange && (array[i]+skalierung) > 0)&&((array[i+1]+skalierung) < yRange && (array[i+1]+skalierung) > 0)) 
+			then
+			{
+			int x1= skalierung*i;
+			int y1= array[i]+xAchseZero;
+			int x2; skalierung*(i+1);
+			int y2= array[i+1]+xAchseZero;
+			g.drawLine(x1,y1,x2,y2);
+			i++;
+			}
+			else
+			{
+			i++;
+			}
+		}
+		*/
 		
 	}
 	public void setWindow(int xMinHilf ,int xMaxHilf, int yMinHilf, int yMaxHilf, int skalHilf, String eingabeHilf)
