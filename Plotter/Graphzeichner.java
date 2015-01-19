@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class Graphzeichner extends JPanel {
 
-	private int yMax,yMin,xMin,xMax,skal;
+	private int yMax,yMin,xMin,xMax,skal,yAchseZero,xAchseZero;
 	private String eingabe;
 	private int yRange;
 	private int xRange;
@@ -16,27 +16,31 @@ public class Graphzeichner extends JPanel {
 	
 	protected void repaint(Graphics g)
 	{
-		g.setColor(Color.black);
-		//g.drawRect(0, 0, 10, 10); debug
-		
-		yRange=yMax-yMin;
-		xRange=xMax-xMin;
-		/*
-		g.drawLine(0,0,0,yRange); //Rahmen ver. Links
-		g.drawLine(0,yRange,xRange,yRange); //Rahmen hor. Unten
-		g.drawLine(xRange,yRange,xRange,0); //Rahmen ver. rechts
-		g.drawLine(xRange,yRange,0,0); //Rahmen hor. oben
-		
-		//g.drawLine(0,0,0,0); //X-Achse
-		//g.drawLine(0,0,0,0); //Y-Achse)
-		*/
-		
 		System.out.println("Xmin" + xMin);
 		System.out.println("Xmax" + xMax);
 		System.out.println("Ymin" + yMin);
 		System.out.println("ymax" + yMax);
 		System.out.println("Xrange" + xRange);
 		System.out.println("yRange" + yRange);
+		
+		
+		g.setColor(Color.black);
+		//g.drawRect(0, 0, 10, 10); debug
+		
+		yRange=yMax-yMin;
+		xRange=xMax-xMin;
+		
+		
+		g.drawLine(0,0,0,yRange); //Rahmen ver. Links
+		g.drawLine(0,yRange,xRange,yRange); //Rahmen hor. Unten
+		g.drawLine(xRange,yRange,xRange,0); //Rahmen ver. rechts
+		g.drawLine(xRange,yRange,0,0); //Rahmen hor. oben
+		
+		yAchseZero=yRange/2;
+		xAchseZero=xRange/2;
+	
+		g.drawLine(0,yAchseZero,xRange,yAchseZero); //X-Achse
+		g.drawLine(xAchseZero,0,xAchseZero,yRange); //Y-Achse)
 		
 	}
 	public void setWindow(int xMinHilf ,int xMaxHilf, int yMinHilf, int yMaxHilf, int skalHilf, String eingabeHilf)
@@ -47,7 +51,6 @@ public class Graphzeichner extends JPanel {
 		yMax=yMaxHilf;
 		skal=skalHilf;
 		eingabe=eingabeHilf;
-		System.out.println("derp");
 	}
 
 	public void plot(String eingabe,int xMin,int xMax)

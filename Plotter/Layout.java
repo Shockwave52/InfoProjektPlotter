@@ -9,7 +9,7 @@ public class Layout implements ActionListener{
 	
 	
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
-	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,platzhalter,ausgabeFeld;
+	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,ausgabeFeld;
 	Graphzeichner sup;
 	
 	
@@ -63,10 +63,7 @@ public class Layout implements ActionListener{
 		yMinLabel.setText("Minimaler Y-Wert");
 		skalierungLabel = new JLabel();
 		skalierungLabel.setText ("Skalierung");
-		
-		//PlatzhalterLabel
-		platzhalter = new JLabel("DerGraph",SwingConstants.LEFT);
-		
+				
 		//Panel zusammenbauen
 		eingabe.setLayout(new GridLayout(7,2)); 
 		//button.setBounds(100, 100, 100, 100);
