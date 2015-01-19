@@ -1,4 +1,4 @@
-package plotter;
+
 import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
@@ -19,31 +19,41 @@ public class Verarbeitung {
 		int xMax=xMaxHilf;
 		String eingabe=formel;
 	}
-		
+	
 
-	public void calculate()
+	public int calculate(String formel,int xMinHilf,int xMaxHilf)// erechnet die benötigten Werte
 	{
+		Eingabe=formel;
+		int faktor=0;
+		int konstante=0;
 		int indexX= Eingabe.indexOf('x');
-		if(! Character.isDigit( Eingabe.charAt( indexX-1 ) ))
+		/*if(! Character.isDigit( Eingabe.charAt( indexX-1 ) ))
 		{
 			for(int i=indexX-2;i>0;i=i-1)
 			{
-				//if(Character.isDigit( Eingabe.charAt( i ) ))
-				//{
+				if(Character.isDigit( Eingabe.charAt( i ) ))
+				{
 				indexA=i;
 				Alänge=Alänge+1;
-				//}
+				}
 			}
 		for(int i=indexA;i<Alänge;i++)
 		{
 		stringA=stringA + Eingabe.charAt(i);
 		}
+		faktor=Integer.parseInt(stringA);
 		}
 		else
 		{
-			
-		}
+			stringA=stringA + Eingabe.charAt(indexX-1);
+			faktor=Integer.parseInt(stringA);
+		}*/
+		return indexX;
 	
+	}
+	public void test(JLabel debug) //Test methode
+	{
+		debug.setText("Sucess");
 	}
 	
 	

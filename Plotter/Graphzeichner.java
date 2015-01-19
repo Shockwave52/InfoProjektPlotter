@@ -1,7 +1,8 @@
-package plotter;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Graphzeichner extends JPanel {
@@ -52,12 +53,16 @@ public class Graphzeichner extends JPanel {
 		skal=skalHilf;
 		eingabe=eingabeHilf;
 	}
-
-	public void plot(String eingabe,int xMin,int xMax)
+	
+	public void plot(String eingabe,int xMin,int xMax, JLabel debugFeld)
 	{
 		
 		Verarbeitung ver = new Verarbeitung(eingabe,xMin,xMax);
+		int test=ver.calculate(eingabe,xMin,xMax);
+		String s=""+test;
+		debugFeld.setText(s);
 		
 	}
+	
 	
 }

@@ -1,4 +1,4 @@
-package plotter;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +9,7 @@ public class Layout implements ActionListener{
 	
 	
 	private JTextField eingabeFeld,xMaxFeld,xMinFeld,yMaxFeld,yMinFeld,skalierungFeld;
-	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,ausgabeFeld;
+	private JLabel eingabeLabel,xMaxLabel, xMinLabel,yMaxLabel,yMinLabel,skalierungLabel,ausgabeFeld,debugFeld;
 	Graphzeichner sup;
 	
 	
@@ -25,6 +25,9 @@ public class Layout implements ActionListener{
 		window.setBackground(Color.lightGray);
 		
 		//Panel definieren
+		JPanel debug=new JPanel();
+		debug.setBackground(Color.GREEN);
+		debug.setPreferredSize(new Dimension(100,30));
 		JPanel ausgabe=new JPanel();
 		ausgabe.setBackground(Color.RED);
 		ausgabe.setPreferredSize(new Dimension(100,50));
@@ -50,6 +53,7 @@ public class Layout implements ActionListener{
 		skalierungFeld=new JTextField("0",10);
 		
 		//JLabel zu eingabeFelder
+		debugFeld=new JLabel();
 		ausgabeFeld=new JLabel();
 		eingabeLabel = new JLabel();
 		eingabeLabel.setText("Funktion");
@@ -67,6 +71,7 @@ public class Layout implements ActionListener{
 		//Panel zusammenbauen
 		eingabe.setLayout(new GridLayout(7,2)); 
 		//button.setBounds(100, 100, 100, 100);
+		debug.add(debugFeld);
 		ausgabe.add(ausgabeFeld);
 		eingabe.add(eingabeLabel);
 		eingabe.add(eingabeFeld);
@@ -84,6 +89,7 @@ public class Layout implements ActionListener{
 		eingabe.add(reset);		
 		
 		window.setLayout(new BorderLayout());
+		window.add(debug,BorderLayout.SOUTH);
 		window.add(eingabe,BorderLayout.WEST);
 		window.add(ausgabe,BorderLayout.CENTER);
 		
@@ -94,6 +100,7 @@ public class Layout implements ActionListener{
 		
 	public void actionPerformed(ActionEvent e)
 	{
+
 		String ein = eingabeFeld.getText();
 		String xma = xMaxFeld.getText();
 		String xmi = xMinFeld.getText();
@@ -107,7 +114,8 @@ public class Layout implements ActionListener{
 		int ymin =Integer.parseInt(ymi);
 		int ymax =Integer.parseInt(yma);
 			
-		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);	
+		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);
+		sup.plot(ein,xmin,xmax,debugFeld);
 		sup.repaint();
 	}
 
