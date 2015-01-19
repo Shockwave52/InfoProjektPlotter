@@ -1,7 +1,7 @@
 package plotter;
 import java.awt.Color;
 import java.awt.Graphics;
-
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -90,9 +90,13 @@ public class Graphzeichner extends JPanel {
 	public void plot(String eingabe,int xMin,int xMax, JLabel debugFeld)
 	{
 		
-		Verarbeitung ver = new Verarbeitung(eingabe,xMin,xMax);
-		int test=ver.calculate(eingabe,xMin,xMax);
-		String s=""+test;
+		Verarbeitung ver = new Verarbeitung();
+		ArrayList<Integer> test=ver.calculate(eingabe,xMin,xMax);
+		String s="";     //                         test für yWerte(ArrayList<Integer>)
+		for(int i=0; i<=(xMax-xMin);i++)
+		{
+			s=s+test.get(i);
+		}
 		debugFeld.setText(s);
 		
 	}
