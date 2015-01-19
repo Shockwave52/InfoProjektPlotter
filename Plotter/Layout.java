@@ -30,8 +30,8 @@ public class Layout implements ActionListener{
 		debug.setPreferredSize(new Dimension(100,30));
 		JPanel ausgabe=new JPanel();
 		ausgabe.setBackground(Color.RED);
-		ausgabe.setPreferredSize(new Dimension(100,50));
-		ausgabe.add(new Graphzeichner());
+		//ausgabe.setPreferredSize(new Dimension(100,50));
+		//ausgabe.add(new Graphzeichner()); //macht den Graphen kapuuut, warum auch immer
 		JPanel eingabe=new JPanel();
 		eingabe.setBackground(Color.BLUE);
 		//eingabe.setPreferredSize(new Dimension(100,90)); quetscht sonst die buttons etc.
@@ -91,7 +91,8 @@ public class Layout implements ActionListener{
 		window.setLayout(new BorderLayout());
 		window.add(debug,BorderLayout.SOUTH);
 		window.add(eingabe,BorderLayout.WEST);
-		window.add(ausgabe,BorderLayout.CENTER);
+		//window.add(ausgabe,BorderLayout.CENTER);//siehe oben
+		window.add(new Graphzeichner(),BorderLayout.CENTER);
 		
 		window.pack();
 		window.setVisible(true);
@@ -116,7 +117,7 @@ public class Layout implements ActionListener{
 			
 		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);
 		sup.plot(ein,xmin,xmax,debugFeld);
-		sup.repaint();
+		//sup.repaint();
 	}
 
 	public static void main(String[] args) {
