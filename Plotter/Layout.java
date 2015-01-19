@@ -1,4 +1,4 @@
-
+package plotter;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -28,9 +28,10 @@ public class Layout implements ActionListener{
 		JPanel ausgabe=new JPanel();
 		ausgabe.setBackground(Color.RED);
 		ausgabe.setPreferredSize(new Dimension(100,50));
+		ausgabe.add(new Graphzeichner());
 		JPanel eingabe=new JPanel();
 		eingabe.setBackground(Color.BLUE);
-		eingabe.setPreferredSize(new Dimension(100,90));
+		//eingabe.setPreferredSize(new Dimension(100,90)); quetscht sonst die buttons etc.
 		
 		//Button,Label, etc definieren
 		
@@ -86,10 +87,8 @@ public class Layout implements ActionListener{
 		eingabe.add(reset);		
 		
 		window.setLayout(new BorderLayout());
-		//window.add(new graph(),BorderLayout.CENTER);
-		//window.add(sup,BorderLayout.CENTER);
 		window.add(eingabe,BorderLayout.WEST);
-		window.add(ausgabe,BorderLayout.SOUTH);
+		window.add(ausgabe,BorderLayout.CENTER);
 		
 		window.pack();
 		window.setVisible(true);
@@ -110,29 +109,14 @@ public class Layout implements ActionListener{
 		int skal =Integer.parseInt(ska);
 		int ymin =Integer.parseInt(ymi);
 		int ymax =Integer.parseInt(yma);
-		
-	
-		
-		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);
-	
-		
-		
-		/*test.setXmin(xmin);
-		test.setXmax(xmax);
-		test.setSkalierung(skal);
-		sup.setYmin(ymin);
-		sup.setYmax(ymax);
-		
-		sup.repaint();*/
-		
-		
+			
+		sup.setWindow(xmin,xmax,ymin,ymax,skal,ein);	
+		sup.repaint();
 	}
 
 	public static void main(String[] args) {
 		
 		Layout Plotter = new Layout();
-		
-	
 	}
 
 }

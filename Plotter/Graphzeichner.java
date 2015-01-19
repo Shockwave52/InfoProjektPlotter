@@ -1,4 +1,4 @@
-
+package plotter;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -14,12 +14,14 @@ public class Graphzeichner extends JPanel {
 	
 	
 	
-	protected void repaint(Graphics g)//Graphics g)
+	protected void repaint(Graphics g)
 	{
-		//Graphics g;// =Graphics;
-	
 		g.setColor(Color.black);
+		//g.drawRect(0, 0, 10, 10); debug
 		
+		yRange=yMax-yMin;
+		xRange=xMax-xMin;
+		/*
 		g.drawLine(0,0,0,yRange); //Rahmen ver. Links
 		g.drawLine(0,yRange,xRange,yRange); //Rahmen hor. Unten
 		g.drawLine(xRange,yRange,xRange,0); //Rahmen ver. rechts
@@ -27,7 +29,15 @@ public class Graphzeichner extends JPanel {
 		
 		//g.drawLine(0,0,0,0); //X-Achse
 		//g.drawLine(0,0,0,0); //Y-Achse)
-	
+		*/
+		
+		System.out.println("Xmin" + xMin);
+		System.out.println("Xmax" + xMax);
+		System.out.println("Ymin" + yMin);
+		System.out.println("ymax" + yMax);
+		System.out.println("Xrange" + xRange);
+		System.out.println("yRange" + yRange);
+		
 	}
 	public void setWindow(int xMinHilf ,int xMaxHilf, int yMinHilf, int yMaxHilf, int skalHilf, String eingabeHilf)
 	{
@@ -37,18 +47,9 @@ public class Graphzeichner extends JPanel {
 		yMax=yMaxHilf;
 		skal=skalHilf;
 		eingabe=eingabeHilf;
+		System.out.println("derp");
 	}
-	/*public void setYmax(int yMa)
-	{
-		Ymax = yMa*10;
-		
-	}
-		
-	public void setYmin(int yMi)
-	{
-		Ymin = yMi*10;
-	}*/
-	
+
 	public void plot(String eingabe,int xMin,int xMax)
 	{
 		
