@@ -1,4 +1,4 @@
-package plotter;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -95,10 +95,21 @@ public class Graphzeichner extends JPanel {
 		Verarbeitung ver = new Verarbeitung();
 		ArrayList<Integer> test=ver.calculate(eingabe,xMin,xMax);
 		String s="";     //                         test für yWerte(ArrayList<Integer>)
-		for(int i=0; i<=(xMax-xMin);i++)
+		if(test.isEmpty())
 		{
-			s=s+test.get(i);
+			s="Error";	
 		}
+		else
+		{
+			for(int i=0; i<1;i++)
+			{
+			
+			
+				s=s+test.get(i);
+			}
+		}
+		//String s=ver.test(debugFeld,eingabe);
+		//String s=ver.calculate(eingabe, xMin, xMax);
 		debugFeld.setText(s);
 		
 	}

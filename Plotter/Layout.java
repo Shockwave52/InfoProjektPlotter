@@ -1,4 +1,4 @@
-package plotter;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -45,9 +45,9 @@ public class Layout implements ActionListener{
 		
 		//eingabeTexfelder
 		
-		eingabeFeld=new JTextField("0",10);
-		xMaxFeld=new JTextField("0",10);
-		xMinFeld=new JTextField("0",10);
+		eingabeFeld=new JTextField("x+5",10);
+		xMaxFeld=new JTextField("10",10);
+		xMinFeld=new JTextField("-10",10);
 		yMaxFeld=new JTextField("0",10);
 		yMinFeld=new JTextField("0",10);
 		skalierungFeld=new JTextField("0",10);
