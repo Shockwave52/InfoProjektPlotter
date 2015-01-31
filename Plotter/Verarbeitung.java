@@ -25,6 +25,10 @@ public class Verarbeitung {
 		ArrayList<Integer> konstanteList= new ArrayList<Integer>();
 		int konstanteZähler=0;
 		ArrayList<Integer> potenzList=new ArrayList<Integer>();
+		ArrayList<Integer> grenzList=new ArrayList<Integer>();
+		ArrayList<Integer> variableList=new ArrayList<Integer>();
+		int variableZähler=0;
+		int summandZähler=1;
 		int potenzZähler=0;
 		int zahl=0;
 		String zahlTyp="Unknown";
@@ -35,30 +39,41 @@ public class Verarbeitung {
 		int faktor=0;
 		int konstante=0;
 		
-		for(int i=0;i<Eingabe.length();i++)
+		for(int i=0;i<Eingabe.length();i++) //Scan der Eingabe
 		{
-			/*if(testChar(i,Eingabe)=="+" || testChar(i,Eingabe)=="*")
+			
+			if(testChar(i,Eingabe)=="+" || testChar(i,Eingabe)=="-") // Speichert die Indexe von '+'
 			{
+				grenzList.add(summandZähler-1,i);
+				summandZähler++;
 				
-			}*/
-			/*if(testChar(i,Eingabe)=="Variable")
+			}
+			if(testChar(i,Eingabe)=="Variable") // Speichert die Variablen und deren Potenzen
 			{
+				variableList.add(variableZähler,i);
+				variableZähler++;
+				
 				if(i<Eingabe.length()-1)
 				{
-				if(testChar(i+1,Eingabe)=="Potenz")
-				{
-					String s=""+Eingabe.charAt(i+2);
-					potenzList.add(potenzZähler,Integer.parseInt(s));
-					potenzZähler++;
+					if(testChar(i+1,Eingabe)=="Potenz")
+					{
+						String s=""+Eingabe.charAt(i+2);
+						potenzList.add(potenzZähler,Integer.parseInt(s));
+						potenzZähler++;
+					}
+					else
+					{
+						potenzList.add(potenzZähler,1);
+						potenzZähler++;
+					}
 				}
 				else
 				{
 					potenzList.add(potenzZähler,1);
 					potenzZähler++;
 				}
-				}
-			}*/
-			if(testChar(i,Eingabe)=="Zahl")
+			}
+			if(testChar(i,Eingabe)=="Zahl") // Überprüft eine Zahl d.H. klassifizierung nach Konstante und Faktor
 			{
 				boolean exit=false;
 				int zahlLänge=1;
@@ -69,7 +84,6 @@ public class Verarbeitung {
 					if(i+n>Eingabe.length()-1)
 					{
 						zahlTyp="Konstante";
-						konstanteList.add(0,3);
 						exit=true;
 					}
 					else
@@ -91,7 +105,7 @@ public class Verarbeitung {
 					}
 				}
 				zahlString="";
-				for(int a=i;a<i+zahlLänge;a++)
+				for(int a=i;a<i+zahlLänge;a++) // Speichert eine Zahl vollständig
 				{
 					
 					zahlString=zahlString+Eingabe.charAt(a);
@@ -110,8 +124,24 @@ public class Verarbeitung {
 				}
 			}
 		}
-		String s=""+zahl+zahlTyp;
-		return konstanteList;
+		for(int x=xMin; x<=xMax; x++)
+		{
+			double Ergebnis=0;
+			for(int s=0;s<summandZähler;s++)	//Test des Scans
+			{
+				if(faktorList.size()==variableList.size())
+				{
+					
+					Ergebnis = Ergebnis+(faktorList.get(s)*Math.pow(x,potenzList.get(s)));
+					//Ergebnis= Ergebnis+konstanteList.get(0);
+					
+				}
+			}
+			int ErgebnisHilf = (int) Ergebnis;
+			yWerte.add(x-xMin,ErgebnisHilf);
+		}
+		
+		return yWerte;
 		/*int indexX= Eingabe.indexOf('x');
 		if(indexX<Eingabe.length() && !Character.isDigit(Eingabe.charAt(indexX+1)))// Errechnung der Konstante mit x+k
 		{
@@ -186,6 +216,10 @@ public class Verarbeitung {
 		if(Eingabe.charAt(charIndex)=='*')
 		{
 			CharTyp="*";
+		}
+		if(Eingabe.charAt(charIndex)=='-')
+		{
+			CharTyp="-";
 		}
 		return CharTyp;
 	}

@@ -101,11 +101,11 @@ public class Graphzeichner extends JPanel {
 		}
 		else
 		{
-			for(int i=0; i<1;i++)
+			for(int i=0; i<test.size();i++)
 			{
 			
 			
-				s=s+test.get(i);
+				s=s+test.get(i)+';';
 			}
 		}
 		//String s=ver.test(debugFeld,eingabe);

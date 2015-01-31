@@ -45,7 +45,7 @@ public class Layout implements ActionListener{
 		
 		//eingabeTexfelder
 		
-		eingabeFeld=new JTextField("x+5",10);
+		eingabeFeld=new JTextField("1*x+1*x",10);
 		xMaxFeld=new JTextField("10",10);
 		xMinFeld=new JTextField("-10",10);
 		yMaxFeld=new JTextField("0",10);
